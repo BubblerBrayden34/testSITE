@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Universal Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // This script fetches the main page and replaces the body content
+    fetch('/index.html')
+      .then(response => response.text())
+      .then(html => {
+        // Extract the body contents of index.html
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        document.body.innerHTML = doc.body.innerHTML;
+        document.title = doc.title;
+      });
+  </script>
+</head>
+<body>
+  <!-- This content will be replaced by the main content above -->
+  <p>Loading...</p>
+</body>
+</html>
